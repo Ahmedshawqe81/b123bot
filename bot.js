@@ -147,7 +147,9 @@ if(!message.channel.guild) return;
 client.on('message', message => {
 if (message.content.startsWith(prefix + 'help')) { //DiamondCodes - [ X_KillerYT ]
     let pages = [`
-
+ **
+بيتم اضافه اوامر جديده للبوت قريبأ
+**
         ***__General orders__***
 **
 
