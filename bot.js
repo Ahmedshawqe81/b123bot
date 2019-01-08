@@ -16,9 +16,7 @@ client.on('ready', () => {
 
 client.on('ready', () => {
    console.log(`----------------`);
-      console.log(`star Bot- Script By : n3k4a `);
-        console.log(`----------------`);
-      console.log(`ON ${client.guilds.size} Servers ' Script By : n3k4a  Codes ' `);
+      console.log(`ON ${client.guilds.size} Servers `);
     console.log(`----------------`);
   console.log(`Logged in as ${client.user.tag}!`);
 client.user.setGame("^help")
@@ -26,7 +24,32 @@ client.user.setStatus("dnd")
  
 });
 
+   client.on('message', message => {
+    if (message.author.bot) return;
+     if (message.content  === prefix + "help-js") {
+          const embed = new Discord.RichEmbed()
+  
 
+   .setColor('RANDOM')
+  .setTimestamp()
+
+  .addField("⦁`All types of codes in Toxic Codes Server 💬`⦁",' ‎ ')
+  .addField("❧  **#help-js-source    ➺      ⦁ قسم السورس الأساسي** ⦁",' ‎ ')
+   .addField("❧  **#help-js-admin     ➺      ⦁ قسم الأكواد الإدارية** ⦁",' ‎ ')
+    .addField("❧  **#help-js-general   ➺      ⦁ قسم الأكواد العامة*** ⦁",' ‎ ')
+     .addField("❧  **#help-js-welcome   ➺      ⦁ قسم أكواد الترحيب** ⦁",' ‎ ')
+	.addField("❧  **#help-js-help      ➺      ⦁ قسم أكواد الهلب** ⦁",' ‎ ')
+            .addField("^ban ➺ لاعطاء باند لشخص من السيرفر ")
+                .addField("^kick ➺ لطرد شخص من السيرفر ")
+ .setFooter('Toxic Codes')
+
+
+   message.channel.send({embed});
+
+
+    }
+});
+  
 
 
 // THIS  MUST  BE  THIS  WAY
