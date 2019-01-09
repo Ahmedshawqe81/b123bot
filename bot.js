@@ -167,7 +167,8 @@ if (message.content.startsWith(prefix + 'help')) { //DiamondCodes - [ X_KillerYT
 『^bc / لعمل برودكاست لاعضاء السيرفر 』
 『 ^role / لاعطاء شخص رتبه انت تحددها 』
 『 ^removerole / لسحب رتبه من شخص انت تحدده』
-『 ^rename    / لتغيير اسم شخص معين داخل السيرفر』
+『 ^close / لقفل روم معين 』
+『 ^open / لفتح الشات بعد قفلها 』
 **
   `
 ,`
@@ -339,27 +340,53 @@ client.on("message", message => {
 });
 
 
+client.on('message', async msg =>{
+	if (msg.author.bot) return undefined;
+    if (!msg.content.startsWith(prefix)) return undefined;
+    
+    let args = msg.content.split(' ');
 
+	let command = msg.content.toLowerCase().split(" ")[0];
+	command = command.slice(prefix.length)
+
+    if(command === `ping`) {
+    let embed = new Discord.RichEmbed()
+    .setColor(3447003)
+    .setTitle("Pong!!")
+    .setDescription(`${client.ping} ms,`)
+    .setFooter(`Requested by | ${msg.author.tag}`);
+    msg.delete().catch(O_o=>{})
+    msg.channel.send(embed);
+    }
+});
 
 
 client.on('message', message => {
-        
-   if(message.content.startsWith(prefix + 'rename')) {
-if(message.member.hasPermission("ADMINISTRATOR")) {
-         let args = message.content.split(' ').slice(2);
-var mentionned = message.mentions.users.first();
-   
-  if(!args){
-    return message.channel.send(":x: " + `**| Please enter a new Nick for ${mentionned}**`);
-  }
-  if (!mentionned)return message.channel.send("**You Have to Mention A member :x:**")
-  message.guild.member(mentionned).setNickname(args.join(" ")).then(user => message.channel.send(`:full_moon_with_face: ${mentionned}'s' **New NickName is **` + `__${args.join(" ")}__` + "!")).catch(console.error);
-} else {
-  return message.reply(":x: " + "| You need to have the \"ADMINISTRATOR\" Permission");
-  }
-
-
+var prefix = "^";
+       if(message.content === prefix + "close") {
+                           if(!message.channel.guild) return message.reply('** This command only for servers**');
+ 
+   if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply(' **تم قفل الشات*');
+              message.channel.overwritePermissions(message.guild.id, {
+            SEND_MESSAGES: false
+ 
+              }).then(() => {
+                  message.reply("**تم قفل الشات :white_check_mark: **")
+              });
+                }
+//FIRE BOT
+    if(message.content === prefix + "open") {
+                        if(!message.channel.guild) return message.reply('** This command only for servers**');
+ 
+   if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('**تم فتح الشات**');
+              message.channel.overwritePermissions(message.guild.id, {
+            SEND_MESSAGES: true
+ 
+              }).then(() => {
+                  message.reply("**تم فتح الشات :white_check_mark:**")
+              });
     }
+       
 });
 
 
