@@ -272,7 +272,7 @@ client.on("message", (message) => {
     }
  
  
-  if (message.content.startsWith("^close")) {
+  if (message.content.startsWith("^tclose")) {
         if (!message.channel.name.startsWith(`^ticket`)) return message.channel.send(`You can't use the close command outside of a ticket channel.`);
  
         message.channel.send(`هل أنت متأكد؟ بعد التأكيد ، لا يمكنك عكس هذا الإجراء!\n للتأكيد ، اكتب\`^confirm\`. سيؤدي ذلك إلى مهلة زمنية في غضون 10 ثوانٍ وإلغائها`)
@@ -366,7 +366,7 @@ client.on('message', async msg =>{
 
 client.on('message', message => {
 var prefix = "^";
-       if(message.content === prefix + "closer") {
+       if(message.content === prefix + "rclose") {
                            if(!message.channel.guild) return message.reply('** This command only for servers**');
  
    if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply(' **تم قفل الشات*');
