@@ -167,7 +167,7 @@ if (message.content.startsWith(prefix + 'help')) { //DiamondCodes - [ X_KillerYT
 『^bc / لعمل برودكاست لاعضاء السيرفر 』
 『 ^role / لاعطاء شخص رتبه انت تحددها 』
 『 ^removerole / لسحب رتبه من شخص انت تحدده』
-『 ^close / لقفل روم معين 』
+『 ^closer/ لقفل روم معين 』
 『 ^open / لفتح الشات بعد قفلها 』
 **
   `
@@ -363,7 +363,7 @@ client.on('message', async msg =>{
 
 client.on('message', message => {
 var prefix = "^";
-       if(message.content === prefix + "close") {
+       if(message.content === prefix + "closer") {
                            if(!message.channel.guild) return message.reply('** This command only for servers**');
  
    if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply(' **تم قفل الشات*');
