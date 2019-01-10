@@ -157,6 +157,7 @@ if (message.content.startsWith(prefix + 'help')) { //DiamondCodes - [ X_KillerYT
 『^ping / لمعرفه سرعه استجابه البوت .. 』
 『^new / لعمل تيكت للادمنيه 』
 『^user / لمعرفه معلومات عن شخص انت تحدده 』
+『^bot / لمعرفه معلومات البوت 』
 **
   `
 ,`
@@ -170,6 +171,7 @@ if (message.content.startsWith(prefix + 'help')) { //DiamondCodes - [ X_KillerYT
 『 ^removerole / لسحب رتبه من شخص انت تحدده』
 『 ^closer/ لقفل روم معين 』
 『 ^open / لفتح الشات بعد قفلها 』
+『 ^kickv / لطرد العضو من الروم الصوتي』
 **
   `
 ,`
@@ -445,6 +447,51 @@ message.channel.sendEmbed(id);
 
 
 
+client.on("message", message => {
+var prefix = "^" // البريفكس
+  let men = message.mentions.users.first();
+  if(message.content.startsWith(prefix + "kickv")) { // الامر
+    try {
+    if(!men) {
+      message.channel.send("**يرجأء اختيار الشخص المراد طرده من الروم**");
+      return;
+    }
+    if(!message.guild.member(men).voiceChannel) return message.channel.send("العضو المراد طرده من الروم غير موجود");
+    if(!message.member.hasPermission("MOVE_MEMBERS")) return message.channel.send("لليس لديك صلاحية")
+    if(!message.guild.me.hasPermission("MOVE_MEMBERS")) return message.channel.send("ليس لدي صلاحية سحب العضو");
+       if(!message.guild.me.hasPermission("MANAGE_CHANNELS")) return message.channel.send("ليس لدي صلاحية انشاء رومات صوتية")
+ 
+    message.guild.createChannel(" VKick", "voice").then(c => {
+      message.guild.member(men).setVoiceChannel(c.id)
+    setTimeout(() => {
+      c.delete()
+    }, 100)
+    });
+    message.channel.send(`**\`\`${men.username}\`\` تم طرد العضو من الروم الصوتي**`)
+} catch (e) {
+  message.channel.send("ليس لدي صلاحية المطلوبة");
+}
+  }
+});
+
+
+client.on('message', message => {
+    if (message.content === ('^bot')) {
+    message.channel.send({
+        embed: new Discord.RichEmbed()
+            .setAuthor(client.user.username,client.user.avatarURL)
+            .setThumbnail(client.user.avatarURL)
+            .setColor('RANDOM')
+            .addField('**Bot Ping**🚀 :' , [`${Date.now() - message.createdTimestamp}` + 'MS'], true)
+            .addField('**Servers**📚 :', [client.guilds.size], true)
+            .addField('**Channels**📝 :' , `[ ${client.channels.size} ]` , true)
+            .addField('**Users**🔮 :' ,`[ ${client.users.size} ]` , true)
+            .addField('**Bot Name**🔰 :' , `[ ${client.user.tag} ]` , true)
+            .addField('**Bot Owner**👑 :' , `[<@ايدي حقك>]` , true)
+            .setFooter(message.author.username, message.author.avatarURL)
+    })
+}
+});
 
 
 // THIS  MUST  BE  THIS  WAY
