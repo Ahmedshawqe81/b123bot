@@ -380,7 +380,7 @@ var prefix = "^";
 //FIRE BOT
     if(message.content === prefix + "open") {
                         if(!message.channel.guild) return message.reply('** This command only for servers**');
- 
+ if(!message.guild.member(message.author).hasPermission("Administrator")) return message.reply("**You dont have permissions**");
    if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('**تم فتح الشات**');
               message.channel.overwritePermissions(message.guild.id, {
             SEND_MESSAGES: true
