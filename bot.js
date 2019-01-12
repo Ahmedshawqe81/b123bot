@@ -158,6 +158,7 @@ if (message.content.startsWith(prefix + 'help')) { //DiamondCodes - [ X_KillerYT
 『^new / لعمل تيكت للادمنيه 』
 『^user / لمعرفه معلومات عن شخص انت تحدده 』
 『^bot / لمعرفه معلومات البوت 』
+『^abot / لجلب رابط اضافه بوت لاضافته بسيرفرك』
 **
   `
 ,`
@@ -497,7 +498,15 @@ client.on('message', message => {
 
 
 
-
+client.on('message', msg => {
+    if(msg.content.startsWith('^abot')) {
+    if(msg.channel.type === 'dm') return;
+const user = msg.mentions.users.first();
+if(!user) return msg.channel.send('``' + '**قم بتحديد بوت**' + '``')
+if(!user.bot) return msg.reply('\`منشن بوت\`');
+msg.channel.send(`**Bot InviteURL : ** https://discordapp.com/oauth2/authorize?client_id=${user.id}&scope=bot&permissions=384064`)
+    }
+});
 
 
 
