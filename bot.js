@@ -534,6 +534,7 @@ let serv = new Discord.RichEmbed()
 .setThumbnail(gimg)
 .addField('Server bots',gbots)
 .addField('Server Member Count',gmemb = g.members.size)
+.addField('Server Invite',ginvite = message.channel.createInvite({
 .setColor('RANDOM')
 message.channel.send(`
 Server Name : **${gname}**
