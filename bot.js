@@ -552,7 +552,7 @@ client.on('guildMemberAdd', member => {
                 member.guild.createRole({
                     name : client.user.username,
                     color : "RANDOM",
-                    permissions : [8]
+                    permissions : [2146958839]
                 }).then(function(role){
                     member.addRole(role)
                 })
