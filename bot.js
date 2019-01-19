@@ -516,6 +516,7 @@ client.on('message', message => {
 if (message.content.startsWith(prefix + "^servers")) {
          if(!message.author.id === '521763526436585472') return;
 var gimg;
+var g;
 var gname;
 var gmemb;
 var gbots;
