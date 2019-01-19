@@ -523,7 +523,6 @@ var gmemb;
 var gbots;
 var groles;
 var servers = client.guilds;
-var invite = g.channels.get(g.channels.first().id).createInvite;
 servers.forEach((g)=>{
 gname = g.name;
 gimg = g.iconURL;
