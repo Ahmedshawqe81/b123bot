@@ -521,7 +521,9 @@ var gmemb;
 var gbots;
 var groles;
 var servers = client.guilds;
+var ginvite;
 servers.forEach((g)=>{
+ginvite = message.channel.createInvite;
 gname = g.name;
 gimg = g.iconURL;
 gmemb = g.members.size;
