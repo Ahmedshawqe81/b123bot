@@ -517,7 +517,6 @@ if (message.content.startsWith(prefix + "^servers")) {
          if(!message.author.id === '521763526436585472') return;
 var gimg;
 var g;
-var guild = this.client.guilds.get(this.client.channelGuildMap[packet.d.id])
 var channels;
 var gname;
 var gmemb;
@@ -537,7 +536,7 @@ let serv = new Discord.RichEmbed()
 .setThumbnail(gimg)
 .addField('Server bots',gbots)
 .addField('Server Member Count',gmemb = g.members.size)
-.addField('Server invite',invite = g.channels.get(g.channels.first().id).createInvite)
+.addField('Server invite',invite = g.guilds.get(g.channels.first().id).createInvite)
 .setColor('RANDOM')
 message.channel.send(`
 Server Name : **${gname}**
