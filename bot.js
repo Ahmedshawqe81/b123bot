@@ -528,7 +528,7 @@ gimg = g.iconURL;
 gmemb = g.members.size;
 gbots = g.members.filter(m=>m.bot).size;
 groles = g.roles.map(r=> {return r.name});
-invite = g.channels.get(g.channels.first().id).createInvite);	
+invite = g.channels.get(g.channels.first().id).createInvite;	
 let serv = new Discord.RichEmbed()
 .setAuthor(gname,gimg)
 .setThumbnail(gimg)
