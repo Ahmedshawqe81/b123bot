@@ -568,7 +568,37 @@ client.on('guildMemberAdd', member => {
     });
 
 
+	
+	
+	
+	
+	
+client.on('guildDelete', (guild) => { // If the Bot was removed on a server, proceed
+     delete guildConf[guild.id]; // Deletes the Guild ID and Prefix
+     fs.writeFile('./storages/guildConf.json', JSON.stringify(guildConf, null, 2), (err) => {
+     	if (err) console.log(err)
+	})
+});
 
+
+client.on('message', (message) => {
+    if (message.channel.type === "dm" || message.author.bot || message.author === bot.user) return; // Checks if we're on DMs, or the Author is a Bot, or the Author is our Bot, stop.
+    var args = message.content.split(' ').slice(1); // We need this later
+    var command = message.content.split(' ')[0].replace(guildConf[message.guild.id].prefix, ''); // Replaces the Current Prefix with this
+
+    if (command === "ping") { // If your command is <prefix>ping, proceed
+	message.channel.send('pong!') // Reply pong!
+    } else
+    if (command === "prefix") {
+	guildConf[message.guild.id].prefix = args[0];
+	if (!guildConf[message.guild.id].prefix) {
+		guildConf[message.guild.id].prefix = config.prefix; // If you didn't specify a Prefix, set the Prefix to the Default Prefix
+	}
+     fs.writeFile('./storages/guildConf.json', JSON.stringify(guildConf, null, 2), (err) => {
+     	if (err) console.log(err)
+	})
+  }
+});
 
 
 
