@@ -24,6 +24,12 @@ client.user.setStatus("dnd")
  
 });
 
+Client.on('message'), async (message) => {
+if (message.content.startsWith(prefix + 'بوت' )) {
+then (message.channel.send('اهلا'))
+});
+
+
 
 
 client.on('message', msg => {
