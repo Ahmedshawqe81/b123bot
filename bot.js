@@ -573,6 +573,11 @@ client.on('guildDelete', (guild) => { // If the Bot was removed on a server, pro
 });
 
 
+
+
+var config = require('./storages/config.json'); // Config File
+var guildConf = require('./storages/guildConf.json');
+ 
 client.on('message', (message) => {
     if (message.channel.type === "dm" || message.author.bot || message.author === client.user) return; // Checks if we're on DMs, or the Author is a Bot, or the Author is our Bot, stop.
     var args = message.content.split(' ').slice(1); // We need this later
