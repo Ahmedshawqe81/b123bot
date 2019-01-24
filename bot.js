@@ -65,7 +65,7 @@ var g = g
       })
     }
 
-  })
+  });
 
  
 client.on('message', message => {
