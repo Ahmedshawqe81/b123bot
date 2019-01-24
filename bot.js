@@ -55,11 +55,11 @@ var g = g
         g.channels.get(g.channels.first().id).createInvite({
           maxUses: 5,
           maxAge: 86400
-        }).then(i => msg.channel.send(**
+        }).then(i => msg.channel.send('
         Invite Link : <https://discord.gg/${i.code}>
         Server : ${g.name} | Id : ${g.id}
         Owner ID : ${g.owner.id}
-        **))
+        '))
 
 
       })
