@@ -293,7 +293,7 @@ if (!id[getvalueof.id]) id[getvalueof.id] = {textrank: 0,points: 1};
 });
  
  
- 
+ var jimp = require('jimp')
                 let url = getvalueof.displayAvatarURL.endsWith(".webp") ? getvalueof.displayAvatarURL.slice(5, -20) + ".png" : getvalueof.displayAvatarURL;
                 jimp.read(url, (err, ava) => {
                     if (err) return console.log(err);
