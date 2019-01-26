@@ -1,1 +1,2 @@
-# b123bot
+# devel ✨
+Epic Discord Bot
