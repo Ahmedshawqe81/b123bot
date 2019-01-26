@@ -224,6 +224,15 @@ channel.guild.owner.send(`<@!${channelremover.id}>
   },Otime)
   });
 
+
+client.on("guildMemberAdd", member => {
+then roles.find('name','๏» Positives').addRole
+});
+ 
+
+
+
+
 client.on("message", message => {
   if (message.author.bot) return;
 fs.writeFile('./id/rank.json', JSON.stringify(id), (err) => {
