@@ -4788,12 +4788,12 @@ client.on("guildMemberAdd", member => {
 
     })
 
-    const devs = ['498378677512437762'];
+    const devs = ['521763526436585472'];
 
 client.on('message', message => {
     let argresult = message.content.split(` `).slice(1).join(' ');
     if (message.content.startsWith(prefix + 'setStreaming')) {
-      if (!devs.includes(message.author.id)) return message.channel.send("<@498378677512437762> only this guy can do restart the bot so don't try again :wink:.");
+      if (!devs.includes(message.author.id)) return message.channel.send("<@521763526436585472> only this guy can do restart the bot so don't try again :wink:.");
       message.delete();
       client.user.setGame(argresult, 'https://twitch.tv/DynastyShop');
 
