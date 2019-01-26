@@ -118,6 +118,7 @@ u.guild.members.get(ss.executor.id).roles.forEach(r => {
         },60000)
     };
     });
+	data = [['Rank', 'RoleName']]
     fs.writeFile("./data.json", JSON.stringify(data) ,(err) =>{
         if (err) console.log(err.message);
     });
