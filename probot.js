@@ -4,7 +4,7 @@ const fs = require("fs");
 const dateFormat = require('dateformat');
 const client = new Discord.Client(); 
 const Canvas = require("canvas"); 
-const prefix = "#"
+const prefix = "p!"
 const id = JSON.parse(fs.readFileSync("./id/rank.json", "utf8"));
 
 let banse = new Set();
@@ -2006,10 +2006,6 @@ client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
     console.log(`in ${client.guilds.size} servers `)
     console.log(`[ ] ${client.users.size}`)
-});
-client.on('ready', () => {
-     client.user.setActivity("you",{type: 'WATCHING'});
-
 });
 
 client.on('message', async msg => {
