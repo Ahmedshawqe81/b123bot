@@ -1,2 +1,1 @@
-# devel ✨
-Epic Discord Bot
+سمك سمك سمك سمك سمك سمااااك
