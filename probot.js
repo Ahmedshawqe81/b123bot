@@ -4828,25 +4828,32 @@ client.on('message', message => {
 
   });
 
+client.on('message',  async  message  =>  {
+  let  user  =  message.mentions.users.first();
+  let  reason  =  message.content.split(' ').slice(2).join(' ');
+if(message.content.startsWith(prefix  +  'warn'))  {
+  message.delete(); 
+  if(!message.member.hasPermission('MUTE_MEMBERS')) return      message.channel.send('**للأسف لا تمتلك صلاحيات' );
+  if(!user)  return  message.channel.send("**  -  mention  a  member  **")
+  if(!reason)  return  message.channel.send("**  -  Type  Reason  **")
+  let  reportembed  =  new  Discord.RichEmbed()
+  .setTitle(`**New  Warned User !**`)
+.addField("**-  Warned  User:**",  `[${user}  with  ID  ${user.id}]`)
+.addField('**-  Warned  By:**',`[${message.author.tag} with id ${message.author.id}]`)
+.addField('**-  Reason:**',  `[${reason}]`,  true)
+.addField("**-  Warned  in:**",`[${message.channel.name}]`) 
+.addField("**-  Time & Date:**",`[${message.createdAt}]`)
+.setFooter("Probot")
+.setColor('#060c37')
+let incidentchannel = message.guild.channels.find(`name`, "warns"); 
+if(!incidentchannel) return message.channel.send("Can't find warns channel."); 
+incidentchannel.send(reportembed);
+message.reply(`**:warning: ${user} has been warned !:warning:**`).then(msg  =>  msg.delete(3000));
+user.send(`**:warning: You are has been warned in ${message.guild.name} reason: ${reason} :warning:**`) 
+}
 
 
-client.on('ready', () => {
-  client.guilds.forEach(g => {
-    g.fetchInvites().then(guildInvites => {
-      invites[g.id] = guildInvites;
-    });
-  });
-});
-client.on('guildMemberAdd', member => {
-  member.guild.fetchInvites().then(guildInvites => {
-    const ei = invites[member.guild.id];
-    const invite = guildInvites.find(i => ei.get(i.code).uses < i.uses);
-    const inviter = client.users.get(invite.inviter.id);
-    const Galal = member.guild.channels.find("name", "welcome");
-     Galal.send(`<@${member.user.id}> joined by <@${inviter.id}>`);
-   //  Galal.send(`<@${member.user.id}> joined using invite code ${invite.code} from <@${inviter.id}>. Invite was used ${invite.uses} times since its creation.`);
-  }); 
-}); 
 
+})
 
 client.login(process.env.BOT_TOKEN);
