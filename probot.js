@@ -225,12 +225,6 @@ channel.guild.owner.send(`<@!${channelremover.id}>
   });
 
 
-client.on("guildMemberAdd", member => {
-  let roles = guild.members.get(ser.id).roles.array()
-then roles.find('name','๏» Positives').addRole
-});
- 
-
 
 
 
