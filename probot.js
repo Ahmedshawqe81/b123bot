@@ -4912,9 +4912,9 @@ LOka.on('guildMemberAdd', member => {
 client.on('message',async message => {
 if(message.content === adminprefix + "restart") {// لعمل ريسترت للبوت
       if (!devs.includes(message.author.id)) return;
-          message.channel.send(⚠️ **Bot restarting by ${message.author.username}**);
+          message.channel.send(**Bot restarting by ${message.author.username}**);
         console.log("\n\n~~~~~~~~~~~");
-        console.log(⚠️ Bot restarting... ⚠️);
+        console.log("⚠️ Restarting Bot ⚠️");
         console.log("===============================================\n\n");
         client.destroy();
         child_process.fork(__dirname + "/bot.js");
