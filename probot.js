@@ -4927,4 +4927,46 @@ if(message.content === adminprefix + "restart") {// لعمل ريسترت للب
 
 
 
+client.on('message', async message => {
+    const args = message.content.slice(prefix.length).trim().split(/ +/g);
+    const command = args.shift().toLowerCase();
+    if(message.author.bot) return;
+    if(message.content.indexOf(prefix) !== 0) return;
+    if (command == "prefix") {
+
+
+  
+  if(!message.member.hasPermission("MANAGE_SERVER")) return message.reply("Need MANAGE_SERVER to do this.");
+  if(!args[0] || args[0 == "help"]) return message.reply("gt(or your custom prefix)-prefix <args[1]>")
+  
+  let prefixes = JSON.parse(fs.readFileSync("./prefixes.json", "utf8"));
+  
+  prefixes[message.guild.id] = {
+    prefixes: args[0]
+  };
+  
+  fs.writeFile("../prefixes.json", JSON.stringify(prefixes), (err) => {
+    if (err) console.log(err)
+  });
+  
+  let embed = new Discord.RichEmbed()
+  .setColor("12345")
+  .setTitle("New Prefix")
+  .setDescription(`Set to ${args[0]}`)
+  
+  message.channel.send(embed)
+    }
+  
+});
+
+
+
+
+
+
+
+
+
+
+
 client.login(process.env.BOT_TOKEN);
