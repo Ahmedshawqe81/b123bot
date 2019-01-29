@@ -5343,7 +5343,8 @@ LOka.on('guildMemberAdd', member => {
                 
             }
         
-    });
+});
+
 
 
 
