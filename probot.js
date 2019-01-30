@@ -4976,6 +4976,17 @@ client.on("message", message => {
 
 
 
+client.on("message", message => {
+       if(message.content == `${prefix}sup-list`) {
+        const ListEmbed = new Discord.RichEmbed()
+            .setTitle('الاشخاص الذي يمتلكون رتبه المساعده :')
+            .setDescription(message.guild.roles.get('540189417520758804').members.map(m=>m.user.tag).join('\n'));
+        message.channel.send(ListEmbed);                    
+    }
+});
+
+
+
 
 
 
