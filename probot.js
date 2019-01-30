@@ -4961,6 +4961,17 @@ client.on('message', async message => {
 
 
 
+client.on("message", message => {
+    var guild = message.guild;
+    let args = message.content.split (" ").slice(1);
+    if (!message.content.startsWith(prefix)) return;
+    if (message.author.bot) return;
+    if (message.content.startsWith(prefix + 'addsup')) {
+        guild.member(message.mentions.users.first()).addRole('540189417520758804');
+    }
+});
+
+
 
 
 
