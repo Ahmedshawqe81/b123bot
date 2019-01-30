@@ -4990,5 +4990,17 @@ client.on("message", message => {
 
 
 
+client.on('guildMemberAdd', member => {
+console.log('User ' + member.user.username + 'Has Joined')
+var role = member.guild.roles.find('name', 'User');
+member.addRole(role)
+});
+
+
+
+
+
+
+
 
 client.login(process.env.BOT_TOKEN);
