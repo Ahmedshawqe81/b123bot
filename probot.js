@@ -15,5 +15,4 @@ ${prefix}help-files`)
 client.on('message', message => {
     if (!message.content.startsWith(`${prefix} + 'help'`))
     message.channel.send(d) 
-    return;
 });
